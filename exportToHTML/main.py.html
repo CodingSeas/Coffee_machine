@@ -1,0 +1,151 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #fc618d;}
+.s1 { color: #f7f1ff;}
+.s2 { color: #69676c; font-style: italic;}
+.s3 { color: #948ae3;}
+.s4 { color: #8b888f;}
+.s5 { color: #fce566;}
+.s6 { color: #5ad4e6;}
+</style>
+</head>
+<body bgcolor="#222222">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">time</span>
+<span class="s0">from </span><span class="s1">system_use </span><span class="s0">import </span><span class="s1">clear</span>
+<span class="s0">from </span><span class="s1">art </span><span class="s0">import </span><span class="s1">logo</span>
+
+<span class="s2"># initial Resources</span>
+<span class="s1">water </span><span class="s0">= </span><span class="s3">300</span>
+<span class="s1">coffee </span><span class="s0">= </span><span class="s3">100</span>
+<span class="s1">milk </span><span class="s0">= </span><span class="s3">200</span>
+<span class="s1">money </span><span class="s0">= </span><span class="s3">0.0</span>
+
+
+<span class="s2"># coffee types</span>
+<span class="s0">def </span><span class="s1">coffee_resource</span><span class="s4">(</span><span class="s1">ctype</span><span class="s0">=None</span><span class="s4">)</span><span class="s0">:</span>
+    <span class="s2">&quot;&quot;&quot;Return the amount of resource required for particular type of coffee and money earned.&quot;&quot;&quot;</span>
+    <span class="s0">if </span><span class="s1">ctype </span><span class="s0">== </span><span class="s5">&quot;espresso&quot;</span><span class="s0">:</span>
+        <span class="s1">water_c </span><span class="s0">= </span><span class="s3">50</span>
+        <span class="s1">coffee_c </span><span class="s0">= </span><span class="s3">18</span>
+        <span class="s1">milk_c </span><span class="s0">= </span><span class="s3">0</span>
+        <span class="s1">money_c </span><span class="s0">= </span><span class="s3">1.5</span>
+    <span class="s0">elif </span><span class="s1">ctype </span><span class="s0">== </span><span class="s5">&quot;latte&quot;</span><span class="s0">:</span>
+        <span class="s1">water_c </span><span class="s0">= </span><span class="s3">200</span>
+        <span class="s1">coffee_c </span><span class="s0">= </span><span class="s3">24</span>
+        <span class="s1">milk_c </span><span class="s0">= </span><span class="s3">150</span>
+        <span class="s1">money_c </span><span class="s0">= </span><span class="s3">2.5</span>
+    <span class="s0">elif </span><span class="s1">ctype </span><span class="s0">== </span><span class="s5">&quot;cappuccino&quot;</span><span class="s0">:</span>
+        <span class="s1">water_c </span><span class="s0">= </span><span class="s3">250</span>
+        <span class="s1">coffee_c </span><span class="s0">= </span><span class="s3">24</span>
+        <span class="s1">milk_c </span><span class="s0">= </span><span class="s3">100</span>
+        <span class="s1">money_c </span><span class="s0">= </span><span class="s3">3</span>
+    <span class="s0">else:</span>
+        <span class="s1">water_c </span><span class="s0">= </span><span class="s3">0</span>
+        <span class="s1">coffee_c </span><span class="s0">= </span><span class="s3">0</span>
+        <span class="s1">milk_c </span><span class="s0">= </span><span class="s3">0</span>
+        <span class="s1">money_c </span><span class="s0">= </span><span class="s3">0</span>
+
+    <span class="s0">return </span><span class="s1">water_c</span><span class="s4">, </span><span class="s1">coffee_c</span><span class="s4">, </span><span class="s1">milk_c</span><span class="s4">, </span><span class="s1">money_c</span>
+
+
+<span class="s2"># Resources sufficient</span>
+<span class="s0">def </span><span class="s1">resource</span><span class="s4">(</span><span class="s1">ctype</span><span class="s0">=None</span><span class="s4">, </span><span class="s1">water_u</span><span class="s0">=</span><span class="s1">water</span><span class="s4">, </span><span class="s1">coffee_u</span><span class="s0">=</span><span class="s1">coffee</span><span class="s4">, </span><span class="s1">milk_u</span><span class="s0">=</span><span class="s1">milk</span><span class="s4">, </span><span class="s1">money_u</span><span class="s0">=</span><span class="s1">money</span><span class="s4">)</span><span class="s0">:</span>
+    <span class="s2">&quot;&quot;&quot;Returns the resource available.&quot;&quot;&quot;</span>
+    <span class="s0">if </span><span class="s1">ctype </span><span class="s0">== </span><span class="s5">&quot;RR&quot;</span><span class="s0">:</span>
+        <span class="s0">return </span><span class="s5">f&quot;Remaining Resource:</span><span class="s6">\n</span><span class="s5">Water: </span><span class="s6">{</span><span class="s1">water_u</span><span class="s6">}</span><span class="s5">ml</span><span class="s6">\n</span><span class="s5">Milk: </span><span class="s6">{</span><span class="s1">milk_u</span><span class="s6">}</span><span class="s5">ml</span><span class="s6">\n</span><span class="s5">Coffee: </span><span class="s6">{</span><span class="s1">coffee_u</span><span class="s6">}</span><span class="s5">g&quot;</span>
+    <span class="s0">elif </span><span class="s1">ctype </span><span class="s0">is None or </span><span class="s1">ctype </span><span class="s0">== </span><span class="s5">&quot;Report&quot;</span><span class="s0">:</span>
+        <span class="s0">pass</span>
+    <span class="s0">else:</span>
+        <span class="s1">water_r</span><span class="s4">, </span><span class="s1">coffee_r</span><span class="s4">, </span><span class="s1">milk_r</span><span class="s4">, </span><span class="s1">money_r </span><span class="s0">= </span><span class="s1">coffee_resource</span><span class="s4">(</span><span class="s1">ctype</span><span class="s4">)</span>
+        <span class="s1">water_u </span><span class="s0">-= </span><span class="s1">water_r</span>
+        <span class="s1">coffee_u </span><span class="s0">-= </span><span class="s1">coffee_r</span>
+        <span class="s1">milk_u </span><span class="s0">-= </span><span class="s1">milk_r</span>
+        <span class="s1">money_u </span><span class="s0">+= </span><span class="s1">money_r</span>
+    <span class="s0">return </span><span class="s1">water_u</span><span class="s4">, </span><span class="s1">coffee_u</span><span class="s4">, </span><span class="s1">milk_u</span><span class="s4">, </span><span class="s1">money_u</span>
+
+
+<span class="s0">def </span><span class="s1">transfer_money</span><span class="s4">(</span><span class="s1">quarters_t</span><span class="s0">=</span><span class="s3">0</span><span class="s4">, </span><span class="s1">dimes_t</span><span class="s0">=</span><span class="s3">0</span><span class="s4">, </span><span class="s1">nickels_t</span><span class="s0">=</span><span class="s3">0</span><span class="s4">, </span><span class="s1">pennies_t</span><span class="s0">=</span><span class="s3">0</span><span class="s4">, </span><span class="s1">ctype</span><span class="s0">=None</span><span class="s4">)</span><span class="s0">:</span>
+    <span class="s1">money_paid </span><span class="s0">= </span><span class="s1">quarters_t </span><span class="s0">* </span><span class="s3">0.25 </span><span class="s0">+ </span><span class="s1">dimes_t </span><span class="s0">* </span><span class="s3">0.1 </span><span class="s0">+ </span><span class="s1">nickels_t </span><span class="s0">* </span><span class="s3">0.05 </span><span class="s0">+ </span><span class="s1">pennies_t </span><span class="s0">* </span><span class="s3">0.01</span>
+    <span class="s0">if </span><span class="s1">coffee_resource</span><span class="s4">(</span><span class="s1">ctype</span><span class="s4">)[</span><span class="s3">3</span><span class="s4">] </span><span class="s0">== </span><span class="s1">money_paid</span><span class="s0">:</span>
+        <span class="s0">return </span><span class="s5">&quot;Successful!&quot;</span><span class="s4">, </span><span class="s0">True</span>
+    <span class="s0">elif </span><span class="s1">coffee_resource</span><span class="s4">(</span><span class="s1">ctype</span><span class="s4">)[</span><span class="s3">3</span><span class="s4">] </span><span class="s0">&lt; </span><span class="s1">money_paid</span><span class="s0">:</span>
+        <span class="s0">return </span><span class="s5">f&quot;Successful!</span><span class="s6">\n</span><span class="s5">Extra money $</span><span class="s6">{</span><span class="s1">round</span><span class="s4">(</span><span class="s1">money_paid </span><span class="s0">- </span><span class="s1">coffee_resource</span><span class="s4">(</span><span class="s1">ctype</span><span class="s4">)[</span><span class="s3">3</span><span class="s4">])</span><span class="s6">} </span><span class="s5">refunded.&quot;</span><span class="s4">, </span><span class="s0">True</span>
+    <span class="s0">else:</span>
+        <span class="s0">return </span><span class="s5">f&quot;Not enough $</span><span class="s6">{</span><span class="s1">coffee_resource</span><span class="s4">(</span><span class="s1">ctype</span><span class="s4">)[</span><span class="s3">3</span><span class="s4">]</span><span class="s6">} </span><span class="s5">money required, $</span><span class="s6">{</span><span class="s1">money_paid</span><span class="s6">} </span><span class="s5">money refunded .&quot;</span><span class="s4">, </span><span class="s0">False</span>
+
+
+<span class="s2"># print report</span>
+<span class="s0">def </span><span class="s1">report</span><span class="s4">(</span><span class="s1">ctype </span><span class="s0">= None</span><span class="s4">, </span><span class="s1">water_e</span><span class="s0">=</span><span class="s1">water</span><span class="s4">, </span><span class="s1">coffee_e</span><span class="s0">=</span><span class="s1">coffee</span><span class="s4">, </span><span class="s1">milk_e</span><span class="s0">=</span><span class="s1">milk</span><span class="s4">, </span><span class="s1">money_e</span><span class="s0">=</span><span class="s1">money</span><span class="s4">)</span><span class="s0">:</span>
+    <span class="s2">&quot;&quot;&quot;Gives detailed report.&quot;&quot;&quot;</span>
+    <span class="s1">water_r</span><span class="s4">, </span><span class="s1">coffee_r</span><span class="s4">, </span><span class="s1">milk_r</span><span class="s4">, </span><span class="s1">money_r </span><span class="s0">= </span><span class="s1">coffee_resource</span><span class="s4">(</span><span class="s1">ctype</span><span class="s4">)</span>
+    <span class="s0">if </span><span class="s1">ctype </span><span class="s0">!= </span><span class="s5">&quot;report&quot;</span><span class="s0">:</span>
+        <span class="s1">result </span><span class="s0">= </span><span class="s5">f&quot;&quot;&quot;Cost of purchasing </span><span class="s6">{</span><span class="s1">ctype</span><span class="s6">}</span><span class="s5">:</span><span class="s6">\n</span><span class="s5">Water: </span><span class="s6">{</span><span class="s1">water_r</span><span class="s6">}</span><span class="s5">ml</span><span class="s6">\n</span><span class="s5">Milk: </span><span class="s6">{</span><span class="s1">milk_r</span><span class="s6">}</span><span class="s5">ml</span><span class="s6">\n</span><span class="s5">Coffee: </span><span class="s6">{</span><span class="s1">coffee_r</span><span class="s6">}</span><span class="s5">g</span>
+<span class="s5">Money: $</span><span class="s6">{</span><span class="s1">money_r</span><span class="s6">}\n</span><span class="s5">Enjoy your </span><span class="s6">{</span><span class="s1">ctype</span><span class="s6">}</span><span class="s5">!&quot;&quot;&quot;</span>
+        <span class="s0">return </span><span class="s1">result</span>
+    <span class="s0">else:</span>
+        <span class="s1">water_r</span><span class="s4">, </span><span class="s1">coffee_r</span><span class="s4">, </span><span class="s1">milk_r</span><span class="s4">, </span><span class="s1">money_r </span><span class="s0">= </span><span class="s1">water_e</span><span class="s4">, </span><span class="s1">coffee_e</span><span class="s4">, </span><span class="s1">milk_e</span><span class="s4">, </span><span class="s1">money_e</span>
+        <span class="s0">return </span><span class="s5">f&quot;Report:</span><span class="s6">\n</span><span class="s5">Water: </span><span class="s6">{</span><span class="s1">water_r</span><span class="s6">}</span><span class="s5">ml</span><span class="s6">\n</span><span class="s5">Milk: </span><span class="s6">{</span><span class="s1">milk_r</span><span class="s6">}</span><span class="s5">ml</span><span class="s6">\n</span><span class="s5">Coffee: </span><span class="s6">{</span><span class="s1">coffee_r</span><span class="s6">}</span><span class="s5">g</span><span class="s6">\n</span><span class="s5">Money: $</span><span class="s6">{</span><span class="s1">money_r</span><span class="s6">}</span><span class="s5">&quot;</span>
+
+
+<span class="s0">def </span><span class="s1">resource_check</span><span class="s4">(</span><span class="s1">resource_list_f</span><span class="s0">=None</span><span class="s4">, </span><span class="s1">resource_req_list_f</span><span class="s0">=None</span><span class="s4">)</span><span class="s0">:</span>
+    <span class="s2">&quot;&quot;&quot;Checks if the list1 is greater than list2.&quot;&quot;&quot;</span>
+    <span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">range</span><span class="s4">(</span><span class="s3">0</span><span class="s4">, </span><span class="s1">len</span><span class="s4">(</span><span class="s1">resource_list_f</span><span class="s4">) </span><span class="s0">- </span><span class="s3">1</span><span class="s4">)</span><span class="s0">:</span>
+        <span class="s0">if </span><span class="s1">resource_list_f</span><span class="s4">[</span><span class="s1">i</span><span class="s4">]</span><span class="s0">-</span><span class="s1">resource_req_list_f</span><span class="s4">[</span><span class="s1">i</span><span class="s4">] </span><span class="s0">&lt; </span><span class="s3">0</span><span class="s0">:</span>
+            <span class="s0">return False</span>
+    <span class="s0">return True</span>
+
+
+<span class="s0">while True:</span>
+    <span class="s1">print</span><span class="s4">(</span><span class="s1">logo</span><span class="s4">)</span>
+
+    <span class="s2"># checking for resources</span>
+    <span class="s1">print</span><span class="s4">(</span><span class="s1">resource</span><span class="s4">(</span><span class="s5">&quot;RR&quot;</span><span class="s4">, </span><span class="s1">water</span><span class="s4">, </span><span class="s1">coffee</span><span class="s4">, </span><span class="s1">milk</span><span class="s4">, </span><span class="s1">money</span><span class="s4">))</span>
+    <span class="s2"># What do you want</span>
+    <span class="s1">coffee_type </span><span class="s0">= </span><span class="s1">input</span><span class="s4">(</span><span class="s5">&quot;What would you like? (espresso/latte/cappuccino)</span><span class="s6">\n</span><span class="s5">&quot;</span><span class="s4">)</span>
+    <span class="s1">money_reached </span><span class="s0">= False</span>
+    <span class="s0">if </span><span class="s1">coffee_type </span><span class="s0">== </span><span class="s5">&quot;off&quot;</span><span class="s0">:</span>
+        <span class="s0">break</span>
+    <span class="s0">elif </span><span class="s1">coffee_type </span><span class="s0">!= </span><span class="s5">&quot;report&quot;</span><span class="s0">:</span>
+        <span class="s2"># Checking for resources required.</span>
+        <span class="s1">resource_list </span><span class="s0">= </span><span class="s1">resource</span><span class="s4">(</span><span class="s0">None</span><span class="s4">, </span><span class="s1">water</span><span class="s4">, </span><span class="s1">coffee</span><span class="s4">, </span><span class="s1">milk</span><span class="s4">, </span><span class="s1">money</span><span class="s4">)</span>
+        <span class="s1">resource_req_list </span><span class="s0">= </span><span class="s1">coffee_resource</span><span class="s4">(</span><span class="s1">coffee_type</span><span class="s4">)</span>
+
+        <span class="s0">if </span><span class="s1">resource_check</span><span class="s4">(</span><span class="s1">resource_list</span><span class="s4">, </span><span class="s1">resource_req_list</span><span class="s4">) </span><span class="s0">and </span><span class="s1">resource_req_list</span><span class="s4">[</span><span class="s3">3</span><span class="s4">] </span><span class="s0">&gt; </span><span class="s3">0</span><span class="s0">:</span>
+            <span class="s2"># process coin</span>
+            <span class="s1">print</span><span class="s4">(</span><span class="s5">&quot;Please insert Coins.&quot;</span><span class="s4">)</span>
+            <span class="s1">quarters </span><span class="s0">= </span><span class="s1">int</span><span class="s4">(</span><span class="s1">input</span><span class="s4">(</span><span class="s5">&quot;How many quarters? &quot;</span><span class="s4">) </span><span class="s0">or </span><span class="s3">0</span><span class="s4">)</span>
+            <span class="s1">dimes </span><span class="s0">= </span><span class="s1">int</span><span class="s4">(</span><span class="s1">input</span><span class="s4">(</span><span class="s5">&quot;How many dimes? &quot;</span><span class="s4">) </span><span class="s0">or </span><span class="s3">0</span><span class="s4">)</span>
+            <span class="s1">nickels </span><span class="s0">= </span><span class="s1">int</span><span class="s4">(</span><span class="s1">input</span><span class="s4">(</span><span class="s5">&quot;How many nickles? &quot;</span><span class="s4">) </span><span class="s0">or </span><span class="s3">0</span><span class="s4">)</span>
+            <span class="s1">pennies </span><span class="s0">= </span><span class="s1">int</span><span class="s4">(</span><span class="s1">input</span><span class="s4">(</span><span class="s5">&quot;How many pennies? &quot;</span><span class="s4">) </span><span class="s0">or </span><span class="s3">0</span><span class="s4">)</span>
+
+            <span class="s2"># check transaction successful?</span>
+            <span class="s1">transaction </span><span class="s0">= </span><span class="s1">transfer_money</span><span class="s4">(</span><span class="s1">quarters</span><span class="s4">, </span><span class="s1">dimes</span><span class="s4">, </span><span class="s1">nickels</span><span class="s4">, </span><span class="s1">pennies</span><span class="s4">, </span><span class="s1">coffee_type</span><span class="s4">)</span>
+            <span class="s1">print</span><span class="s4">(</span><span class="s1">transaction</span><span class="s4">[</span><span class="s3">0</span><span class="s4">], </span><span class="s5">&quot;</span><span class="s6">\n</span><span class="s5">&quot;</span><span class="s4">)</span>
+
+            <span class="s0">if </span><span class="s1">transaction</span><span class="s4">[</span><span class="s3">1</span><span class="s4">]</span><span class="s0">:</span>
+                <span class="s1">money_reached </span><span class="s0">= True</span>
+                <span class="s2"># Updating resources</span>
+                <span class="s1">water</span><span class="s4">, </span><span class="s1">coffee</span><span class="s4">, </span><span class="s1">milk</span><span class="s4">, </span><span class="s1">money </span><span class="s0">= </span><span class="s1">resource</span><span class="s4">(</span><span class="s1">coffee_type</span><span class="s4">, </span><span class="s1">water</span><span class="s4">, </span><span class="s1">coffee</span><span class="s4">, </span><span class="s1">milk</span><span class="s4">,  </span><span class="s1">money</span><span class="s4">)</span>
+        <span class="s0">else:</span>
+            <span class="s1">print</span><span class="s4">(</span><span class="s5">&quot;Sorry! Resource Depleted.&quot;</span><span class="s4">)</span>
+    <span class="s0">else:</span>
+        <span class="s1">money_reached </span><span class="s0">= True</span>
+    <span class="s0">if </span><span class="s1">money_reached</span><span class="s0">:</span>
+        <span class="s1">print</span><span class="s4">(</span><span class="s1">report</span><span class="s4">(</span><span class="s1">coffee_type</span><span class="s4">, </span><span class="s1">water</span><span class="s4">, </span><span class="s1">coffee</span><span class="s4">, </span><span class="s1">milk</span><span class="s4">, </span><span class="s1">money</span><span class="s4">))</span>
+        <span class="s1">print</span><span class="s4">()</span>
+    <span class="s0">else:</span>
+        <span class="s1">print</span><span class="s4">(</span><span class="s5">&quot;Unsuccessful!&quot;</span><span class="s4">)</span>
+
+    <span class="s1">time</span><span class="s4">.</span><span class="s1">sleep</span><span class="s4">(</span><span class="s3">5</span><span class="s4">)</span>
+    <span class="s1">clear</span><span class="s4">()</span>
+</pre>
+</body>
+</html>
